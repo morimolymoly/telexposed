@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,10 +31,11 @@ public class TelexActivity extends Activity implements View.OnClickListener{
     private void initControl() {
         tm = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
 
-        preference = getSharedPreferences(PREF_NAME, Context.MODE_WORLD_READABLE);
+        preference = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         phonenumber = (EditText)findViewById(R.id.phonenumber);
         save = (Button)findViewById(R.id.save);
         save.setOnClickListener(this);
+        Log.d("TELEX","saved");
 
         try {
             phonenumber.setText(preference.getString(PHONE_NUM, ""));

@@ -22,6 +22,7 @@ public class TelexMain implements IXposedHookLoadPackage {
             Log.d("TELEX","handleLoadPackage " + lpparam.packageName);
             XSharedPreferences pre = new XSharedPreferences("com.mmmly.telexposed", TelexActivity.PREF_NAME);
             HookMethod(TelephonyManager.class.getName(),lpparam.classLoader,"getLine1Number",pre.getString(TelexActivity.PHONE_NUM, ""));
+            Log.d("TELEX", pre.getString(TelexActivity.PHONE_NUM, ""));
 
         } catch (Throwable e)
         {
